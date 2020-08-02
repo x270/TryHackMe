@@ -72,7 +72,7 @@ Displayed to the left of #5-Flag.
 # exiftool jpeg3.jpeg
 ```
 Displayed in the "Document Name" line.
-# [Task 5] Stegoveritas
+## [Task 5] Stegoveritas
 How to install.
 ```sh
 # pip3 install stegoveritas 
@@ -132,7 +132,7 @@ Get the Key 2!😌
 #### #3 What is key 3?
 Get qrcode.png.
 ```sh
-# stegoveritas ./qr/qrcode.png
+# stegoveritas qrcode.png
 ```
 There are many files in the results directory.  
 Let's scan the QR code that looks proper with your smartphone.😅
