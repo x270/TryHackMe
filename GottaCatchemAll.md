@@ -45,7 +45,7 @@ xxx...のところが`:`で区切られていることからIDとPWと推測。
 ssh pokemon@[TargetIP]
 ```
 
-#### #1	Find the Grass-Type Pokemon
+## #1	Find the Grass-Type Pokemon
 ```shell
 pokemon@root:~$ ls
 Desktop  Documents  Downloads  examples.desktop  Music  Pictures  Public  Templates  Videos
@@ -67,7 +67,7 @@ pokemon@root:~/Desktop/P0kEmOn$ cat grass-type.txt
 `grass-type.txt`に16進コードで書かれた文字列があるので、戻すと正解。
 
 
-#### #2	Find the Water-Type Pokemon
+## #2	Find the Water-Type Pokemon
 1問目と問題文からファイル名を`water-type.txt`と推測。  
 ```shell
 pokemon@root:~/Desktop/P0kEmOn$ find / -name water-type.txt 2> /dev/null
@@ -78,7 +78,7 @@ Ecgudfxq_EcGmP{Ecgudfxq}
 ROT13ではなかったが、単換字式暗号ぽい。  
 14文字ずらすと最初にHTMLソースで見た名前が出てくる。
 
-#### #3	Find the Fire-Type Pokemon
+## #3	Find the Fire-Type Pokemon
 同様に`fire-type.txt`を探すが見つからない。
 
 ```shell
@@ -121,7 +121,7 @@ UDBrM20wbntDaGFybWFuZGVyfQ==
 ```
 Base64で戻すと正解。
 
-#### #4	Who is Root's Favorite Pokemon?
+## #4	Who is Root's Favorite Pokemon?
 ```shell
 ash@root:/home$ ls
 ash  pokemon  roots-pokemon.txt
