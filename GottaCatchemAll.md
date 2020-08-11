@@ -1,4 +1,4 @@
-# Gotta Catch'em All!
+# Gotta Catch'em All! writeup
 https://tryhackme.com/room/pokemon
 
 ### 事前調査
