@@ -11,9 +11,8 @@ No question.
 ```
 アキュートアクセントで書かれている。
 
-Google ChromeのDevToolsを開き、Consoleに中身をそのまま貼り付けて実行する。  
-JavaScriptでプロンプトが開き「Entrez le mot de passe'」と問われるのが、  
-適当に文字を入力するも`fail...`と言われる。
+Google ChromeのDevToolsを開き、Consoleに中身をそのまま貼り付けて実行するとプロンプトが開く。  
+`Entrez le mot de passe`と問われるが、適当に文字を入力するも`fail...`と言われる。
 
 末尾の`()`を`.toString()`に書き換えて、再度DevToolsで実行する。
 ```
@@ -41,11 +40,23 @@ var pass = unescape("unescape("String.fromCharCode%28104%2C68%2C117%2C102%2C106%
 ```javascript
 var pass = unescape("unescape("String.fromCharCode(104,68,117,102,106,100,107,105,49,53,54)")");
 ```
-実行できそうな形式に見えるが、不要な`"`が混じっているので削除する。
+不要な`"`が混じっているので削除する。
 ```javascript
 var pass = unescape(unescape(String.fromCharCode(104,68,117,102,106,100,107,105,49,53,54)));
 ```
 Task2と同様、Consoleに貼り付けて実行し、`pass`に格納される値がフラグ。
+
+## Task 4 Capture The Flag
+どこかにフラグがあるらしい。  
+Task 1に貼られている画像ファイル`bear.jpg`をダウンロードしてみる。  
+`Steghide-Brute-Force-Tool`などにかけると、パスワード`pandas`が得られる。  
+```shell
+$ steghide extract -sf bear.jpg
+Enter passphrase:
+wrote extracted data to "challenge.txt".
+$ ls
+bear.jpg  challenge.txt
+```
 
 
 
