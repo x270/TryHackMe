@@ -56,19 +56,35 @@ Enter passphrase:
 wrote extracted data to "challenge.txt".
 $ ls
 bear.jpg  challenge.txt
+$ cat challenge.txt
+‌‌‌‌‍‌‍‬Grizzly‌‌‌‌‍‬﻿‌‌‌‌‌‍‬‌‍‌‌‌‌‍‬‍﻿‌‌‌‌‌﻿‬‬‌‌‌‌‌‬‌‌‌‌‌‌‌‬‬‬‌‌‌‌‌﻿‬﻿‌‌‌‌‍﻿﻿‍‌‌‌‌‌﻿‬‍‌‌‌‌‌﻿‍‌‌‌‌‌‌﻿﻿﻿‌‌‌‌‍﻿﻿‍‌‌‌‌‌﻿‍﻿‌‌‌‌‌‬‬﻿‌‌‌‌‍‌‬﻿‌‌‌‌‍﻿‌‌‌‌‌‌‍‌‬‌‌‌‌‌‌﻿‌﻿!‌‌‌‌‌﻿﻿‬‌‌‌‌‍﻿‍‍‌‌‌‌‌﻿‍﻿‌‌‌‌‌﻿‍‌‌‌‌‌‍﻿‍‬‌‌‌‌‍﻿‍‌‌‌‌‌‌﻿﻿‌‌‌‌‌‍﻿‬‍‌‌‌‌‍﻿‍‍‌‌‌‌‍‬‬‌‌‌‌‌‍‍﻿﻿‌‌‌‌‍﻿﻿‍‌‌‌‌‍﻿‍‬‌‌‌‌‌‬‍﻿‌‌‌‌‌﻿‍﻿‌‌‌‌‍﻿﻿‌‌‌‌‌‍﻿‍‍‌‌‌‌‍﻿﻿‍‌‌‌‌‍﻿‌﻿‌‌‌‌‌‬‍‬‌‌‌‌‍﻿‌‌‌‌‌‌‍‬﻿‌‌‌‌‌‍‬﻿‌
 ```
 
+```
+$ vim challenge.txt
+1 <200c><200c><200c><200c><200d><200c><200d><202c>Grizzly<200c><200c><200c><200c><200d><202c><feff><200c><200c><200c><200c><200c><200d><202c><200c><200d><200c><200c><200c><200c><200d><202c><200d><feff><200c><200c><200c><200c><200c><feff><202c><202c><200c><200c><200c><200c><200c><202c><200c><200c><200c><200c><200c><200c><200c><202c><202c><202c><200c><200c><200c><200c><200c><feff><202c><feff><200c><200c><200c><200c><200d><feff><feff><200d><200c><200c><200c><200c><200c><feff><202c><200d><200c><200c><200c><200c><200c><feff><200d><200c><200c><200c><200c><200c><200c><feff><feff><feff><200c><200c><200c><200c><200d><feff><feff><200d><200c><200c><200c><200c><200c><feff><200d><feff><200c><200c><200c><200c><200c><202c><202c><feff><200c><200c><200c><200c><200d><200c><202c><feff><200c><200c><200c><200c><200d><feff><200c><200c><200c><200c><200c><200c><200d><200c><202c><200c><200c><200c><200c><200c><200c><feff><200c><feff>!<200c><200c><200c><200c><200c><feff><feff><202c><200c><200c><200c><200c><200d><feff><200d><200d><200c><200c><200c><200c><200c><feff><200d><feff><200c><200c><200c><200c><200c><feff><200d><200c><200c><200c><200c><200c><200d><feff><200d><202c><200c><200c><200c><200c><200d><feff><200d><200c><200c><200c><200c><200c><200c><feff><feff><200c><200c><200c><200c><200c><200d><feff><202c><200d><200c><200c><200c><200c><200d><feff><200d><200d><200c><200c><200c><200c><200d><202c><202c><200c><200c><200c><200c><200c><200d><200d><feff><feff><200c><200c><200c><200c><200d><feff><feff><200d><200c><200c><200c><200c><200d><feff><200d><202c><200c><200c><200c><200c><200c><202c><200d><feff><200c><200c><200c><200c><200c><feff><200d><feff><200c><200c><200c><200c><200d><feff><feff><200c><200c><200c><200c><200c><200d><feff><200d><200d><200c><200c><200c><200c><200d><feff><feff><200d><200c><200c><200c><200c><200d><feff><200c><feff><200c><200c><200c><200c><200c><202c><200d><202c><200c><200c><200c><200c><200d><feff><200c><200c><200c><200c><200c><200c><200d><202c><feff><200c><200c><200c><200c><200c><200d><202c><feff><200c>
+```
+Unicodeのゼロ幅文字の羅列になっている。  
+これも何かのSteganographyかと調べて、下記サイトに行きつく。  
+**Unicodeステガノグラフィ with JavaScript**  
+https://www.330k.info/software/plain-text-steganography-with-unicode/  
+**Unicode Steganography with Zero-Width Characters**  
+https://330k.github.io/misc_tools/unicode_steganography.html  
 
+2つ目のサイトの`Binary in Text Steganography Sample`の右のテキストエリア`Steganography Text:`に  
+`challenge.txt`の中身をそのまま貼り付け、`Decode`ボタンを実行。  
+左側の`Download Hidden Data as File`から` hidden_data`を入手できる。  
 
+```shell
+$cat hidden_data
+Flag: *;}94?}7+KpH3>u74vt<yuh_}v'7|u}s&pll[ro
+```
 
+換字暗号のように見えるので、CyberChefを使う。  
+ROT47で戻し、`YjNhcnNfZzAwbmFfcGEkJF90NGVfMFNDUA==`を入手。  
+https://gchq.github.io/CyberChef/#recipe=ROT47(47)&input=Kjt9OTQ/fTcrS3BIMz51NzR2dDx5dWhffXYnN3x1fXMmcGxs
 
-
-
-
-
-
-
-
-
-
-
+末尾の`==`からBase64と推測し、デコードするとフラグを得られる。  
+```
+$ echo YjNhcnNfZzAwbmFfcGEkJF90NGVfMFNDUA== | base64 -d
+```
