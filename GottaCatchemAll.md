@@ -11,7 +11,7 @@ nmap -sC -sV -Pn [TargetIP]
 
 #### 80番ポート
 ブラウザからアクセス。  
-Apache2のデフォルト画面のように見えるが、HTMLソースを確認。  
+Apache2のデフォルト画面のように見えるが、HTMLソースにポケモンの名前が書かれている。  
 ```HTML
  <script type="text/javascript">
     	const randomPokemon = [
@@ -31,16 +31,16 @@ Apache2のデフォルト画面のように見えるが、HTMLソースを確認
     	console.log(original);
     </script>
 ```
-ポケモンの名前が書かれている。
+また、最下部の方に変なタグと怪しいコメントがある。  
+`<pokemon>:<xxxxxxxxxxxxxxx>`が`:`で区切られていることからIDとPWと推測。
+
 ```
         <pokemon>:<xxxxxxxxxxxxxxx>
         	<!--(Check console for extra surprise!)-->
 ```
-最下部の方に何やら書かれている。  
-xxx...のところが`:`で区切られていることからIDとPWと推測。
 
 #### 22番ポート
-先ほど見つけたIDとPWでログインを試行。
+先ほど見つけたIDとPWでSSHログインできる。  
 ```shell
 ssh pokemon@[TargetIP]
 ```
@@ -76,7 +76,7 @@ pokemon@root:~/Desktop/P0kEmOn$ cat /var/www/html/water-type.txt
 Ecgudfxq_EcGmP{Ecgudfxq}
 ```
 ROT13ではなかったが、単換字式暗号ぽい。  
-14文字ずらすと最初にHTMLソースで見た名前が出てくる。
+14文字ずらすと最初に見たHTMLソースに載っているポケモンの名前が出てくる。
 
 ## #3	Find the Fire-Type Pokemon
 同様に`fire-type.txt`を探すが見つからない。
@@ -110,7 +110,7 @@ int main() {
         return 0;
 ```
 
-ユーザを`ash`にスイッチ。  
+ユーザを`ash`にスイッチ。  ちなみに`ash`は日本のポケモンで言うところの`サトシ`。
 ```shell
 ash@root:/home$ find / -name *type.txt 2>/dev/null
 /var/www/html/water-type.txt
