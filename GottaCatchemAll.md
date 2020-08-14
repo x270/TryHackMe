@@ -62,7 +62,7 @@ pokemon@root:~/Desktop$ cd P0kEmOn/
 pokemon@root:~/Desktop/P0kEmOn$ ls
 grass-type.txt
 pokemon@root:~/Desktop/P0kEmOn$ cat grass-type.txt
-50 6f 4b 65 4d 6f 4e 7b 42 75 6c 62 61 73 61 75 72 7dp
+50 6f 4b 65 4d 6f 4e 7b 42 75 6c 62 61 73 61 75 72 7d
 ```
 `grass-type.txt`に16進コードで書かれた文字列があるので、戻すと正解。
 
