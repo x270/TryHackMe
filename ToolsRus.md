@@ -54,7 +54,6 @@ http://10.10.80.110/protected (Status: 401)
 > guidelines
 
 `bob`というユーザがいる様子。
-
 ```shell
 [root@kali]# wget -q -O - http://10.10.80.110/guidelines/
 Hey <b>bob</b>, did you update that TomCat server?
@@ -94,10 +93,46 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2020-08-15 16:08:
 
 `dirbuster`で探すと`:1234`の認証画面`/manager/html`が見つかる。
 認証情報を付けて、Niktoでスキャンをかける。  
-スキャンが終るまで1時間かかる上に、結果を保存し損ねた。  
 `Tomcat documentation found`の行数を数えればよい。
 ```shell
 [root@kali]# nikto id bob:XXXXXXXX -h http://10.10.80.110:1234/manager/html
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.80.110
++ Target Hostname:    10.10.80.110
++ Target Port:        1234
++ Start Time:         2020-08-15 17:08:31 (GMT9)
+---------------------------------------------------------------------------
++ Server: Apache-Coyote/1.1
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Allowed HTTP Methods: GET, HEAD, POST, PUT, DELETE, OPTIONS
++ OSVDB-397: HTTP method ('Allow' Header): 'PUT' method could allow clients to save files on the web server.
++ OSVDB-5646: HTTP method ('Allow' Header): 'DELETE' may allow clients to remove files on the web server.
++ OSVDB-3092: /manager/html/localstart.asp: This may be interesting...
++ OSVDB-3233: /manager/html/manager/manager-howto.html: Tomcat documentation found.
++ OSVDB-3233: /manager/html/jk-manager/manager-howto.html: Tomcat documentation found.
++ OSVDB-3233: /manager/html/jk-status/manager-howto.html: Tomcat documentation found.
++ OSVDB-3233: /manager/html/admin/manager-howto.html: Tomcat documentation found.
++ OSVDB-3233: /manager/html/host-manager/manager-howto.html: Tomcat documentation found.
++ /manager/html/manager/html: Default Tomcat Manager / Host Manager interface found
++ /manager/html/jk-manager/html: Default Tomcat Manager / Host Manager interface found
++ /manager/html/jk-status/html: Default Tomcat Manager / Host Manager interface found
++ /manager/html/admin/html: Default Tomcat Manager / Host Manager interface found
++ /manager/html/host-manager/html: Default Tomcat Manager / Host Manager interface found
++ /manager/html/httpd.conf: Apache httpd.conf configuration file
++ /manager/html/httpd.conf.bak: Apache httpd.conf configuration file
++ /manager/html/manager/status: Default Tomcat Server Status interface found
++ /manager/html/jk-manager/status: Default Tomcat Server Status interface found
++ /manager/html/jk-status/status: Default Tomcat Server Status interface found
++ /manager/html/admin/status: Default Tomcat Server Status interface found
++ /manager/html/host-manager/status: Default Tomcat Server Status interface found
++ 8043 requests: 0 error(s) and 24 item(s) reported on remote host
++ End Time:           2020-08-15 17:48:35 (GMT9) (2404 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
 ```
 ### #7 Use Nikto with the credentials you have found and scan the /manager/html directory on the port found above. How many documentation files did Nikto identify?
 > 5
