@@ -1,4 +1,4 @@
-# ToolsRus
+# ToolsRus writeup
 https://tryhackme.com/room/toolsrus
 
 ```shell
