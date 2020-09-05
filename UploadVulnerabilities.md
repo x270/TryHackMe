@@ -15,10 +15,10 @@ http://overwrite.uploadvulns.thm/ にアクセスする。
 
 ### #1
 ページのソースを確認。  
-アップロード先と同じディレクトリに既にファイルがある。
+アップロード先と同じディレクトリに既に存在するファイル名を見つける。。
 ```html
 	<body>
-		<img src="images/mountains.jpg" alt="">
+		<img src="images/XXXXXXXXX.jpg" alt="">
 		<main>
 ```
 
@@ -70,13 +70,13 @@ catコマンドでFlagを参照する。
 ## [Task 6] Filtering
 
 ### #1 What is the traditional server-side scripting language?
-先ほども使用した`php`。
+Omission.
 
 ### #2 When validating by file extension, what would you call a list of accepted extensions (whereby the server rejects any extension not in the list)?
-Whitelist
+Omission.
 
 ### #3 [Research] What MIME type would you expect to see when uploading a CSV file?
-text/csv
+Omission.
 
 ## [Task 7] Bypassing Client-Side Filtering
 http://java.uploadvulns.thm/ にアクセスする。
